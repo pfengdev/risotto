@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+import spotipy
+import spotipy.util as util
+import logging
 
-# Create your views here.
+def get_playlists(request):
+    return HttpResponse('playlists')
