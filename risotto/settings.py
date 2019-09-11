@@ -56,7 +56,7 @@ ROOT_URLCONF = 'risotto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,9 +125,10 @@ STATIC_URL = '/static/'
 
 # Social auth backends
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.spotify.SpotifyOAuth2'
+    'social_core.backends.spotify.SpotifyOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
 ]
 SOCIAL_AUTH_SPOTIFY_KEY = 'e1d590560a9643e2a1a189607f5cdfee'
 SOCIAL_AUTH_SPOTIFY_SECRET = '599412589a8d467f944a814a5ad81ee1'
-
 LOGIN_REDIRECT_URL = '/spotify/playlists'
+LOGOUT_REDIRECT_URL = 'home'
