@@ -1,0 +1,7 @@
+{% for playlist in playlists %}
+<h2>
+  <a href="/spotify/playlists/{{playlist.id}}/songs">
+    {{playlist.name}}
+  </a>
+</h2>
+{% endfor %}
