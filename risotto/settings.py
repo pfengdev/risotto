@@ -126,9 +126,12 @@ STATIC_URL = '/static/'
 # Social auth backends
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.spotify.SpotifyOAuth2',
+    'geniusOauth.auth.GeniusOauth2',
     'django.contrib.auth.backends.ModelBackend'
 ]
 SOCIAL_AUTH_SPOTIFY_KEY = 'e1d590560a9643e2a1a189607f5cdfee'
 SOCIAL_AUTH_SPOTIFY_SECRET = '599412589a8d467f944a814a5ad81ee1'
+SOCIAL_AUTH_GENIUS_KEY = 'obrgVzCj1LlnjV2PlKeNeoL5PrzjyrVO7ZF_lvlose2A_OJYk9-4ASIFssWmPTUO'
+SOCIAL_AUTH_GENIUS_SECRET = 'odbdcFiSMvZdVGjIS7yqgwwbqYzV4wKVAf3OW32f39ynCXf2dNR30LZ4XRBW_zogOt-gOPzo4GH_gv93U0YZGw'
 LOGIN_REDIRECT_URL = '/spotify/playlists'
 LOGOUT_REDIRECT_URL = 'home'
