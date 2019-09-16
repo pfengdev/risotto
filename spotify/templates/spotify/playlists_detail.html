@@ -1,7 +1,16 @@
 {% for song in songs %}
 <h2>
-  <a href="/spotify/songs/{{song.id}}">
+  <a href="/spotify/songs/{{song.search_artist}}/{{song.name}}">
     {{song.name}}
   </a>
+  <p> by
+    {% for artist in song.artists %}
+      {% if not forloop.last %}
+        {{artist.name}},
+      {% else %}
+        {{artist.name}}
+      {% endif %}
+    {% endfor %}
+  </p>
 </h2>
 {% endfor %}
