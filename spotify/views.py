@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.template import loader
+import jieba
+import logging
+import lyricsgenius
 import spotipy
 import spotipy.util as util
-import lyricsgenius
-import logging
 
 def index(request):
     template = loader.get_template('spotify/index.html')
@@ -44,7 +45,10 @@ def song_lyrics(request, search_artist, song_name):
     genius_client = get_genius_client(request)
     song = genius_client.search_song(song_name, search_artist)
     song_lyrics_full_text = song.lyrics
-    song_lines = song_lyrics_full_text.split('\n')
+    song_lines = []
+    for line in song_lyrics_full_text.split('\n'):
+        song_words = jieba.cut(line, cut_all=False)
+        song_lines.append(song_words)
     template = loader.get_template('spotify/song_lyrics.html')
     context = {
         'song_name': song_name,

@@ -3,6 +3,8 @@
 </h2>
 {% for line in song_lines %}
 <p>
-  {{line}}
+  {% for word in line %}
+    {{word}}
+  {% endfor %}
 </p>
 {% endfor %}
